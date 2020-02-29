@@ -1,5 +1,7 @@
 {
   "name": "travelCompanion",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
