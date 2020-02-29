@@ -1,17 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 3
+      Baggage Allowance
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Travel Companion</ion-card-subtitle>
+      <ion-card-title>Baggage Allowance</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Just select your status and booking class, we will handle the rest.
+    </ion-card-content>
+  </ion-card>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Lufthansa Status</ion-label> 
+            <ion-select (ionChange)="onChange($e)" [(ngModel)]="status">
+              <ion-select-option value="MM">Miles & More Member</ion-select-option>
+              <ion-select-option value="FLT">Frequent Traveller</ion-select-option>
+              <ion-select-option value="SG">Star Alliance Gold</ion-select-option>
+              <ion-select-option value="SEN">Senator</ion-select-option>
+              <ion-select-option value="HON">HON Circle</ion-select-option>
+            </ion-select>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Booking Class</ion-label> 
+            <ion-select (ionChange)="onChange($e)" [(ngModel)]="bookingClass">
+              <ion-select-option value="economy">Economy Class</ion-select-option>
+              <ion-select-option value="economy-flex">Economy Flex</ion-select-option>
+              <ion-select-option value="premim-economy">Premium Economy</ion-select-option>
+              <ion-select-option value="business">Business Class</ion-select-option>
+              <ion-select-option value="first">First Class</ion-select-option>
+            </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <div>
+      <ion-card-header>
+        <ion-card-title>{{statusName}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <img [src]="getBookingClassPictureUrl()" style="float:left; margin-bottom: 1em; width:40%; margin-right: 1em">
+        <p style="font-size: 1.2em;"><span class="fat">{{carryOnAmount}}</span> item of carry-on baggage up to <span class="fat">8 kg</span><br/>
+          <span class="fat">{{baggageAmount}}</span> items of baggage, each up to <span class="fat">{{baggageWeight}} kg</span></p>
+      </ion-card-content>
+    </div>
+
+  </ion-card>
+
+  
 </ion-content>
